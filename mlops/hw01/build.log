@@ -1,0 +1,28 @@
+$ /home/debuser/mlops/hw01# docker build -t netology-ml:netology-ml .
+[+] Building 489.8s (10/10) FINISHED                                                  	docker:default
+ => [internal] load build definition from Dockerfile                                            	0.3s
+ => => transferring dockerfile: 204B                                                            	0.1s
+ => [internal] load metadata for docker.io/continuumio/miniconda3:latest                        	2.5s
+ => [internal] load .dockerignore                                                               	0.1s
+ => => transferring context: 2B                                                                 	0.0s
+ => [1/5] FROM docker.io/continuumio/miniconda3:latest@sha256:5ee0ed861bce8f67acb0a3e8a416891781d  71.6s
+ => => resolve docker.io/continuumio/miniconda3:latest@sha256:5ee0ed861bce8f67acb0a3e8a416891781db  0.2s
+ => => sha256:5ee0ed861bce8f67acb0a3e8a416891781db54302d93bf20a3c6301d7683d7b9 3.11kB / 3.11kB  	0.0s
+ => => sha256:166ff37fba6c25fcad8516aa5481a2a8dfde11370f81b245c1e2e8002e68bcce 869B / 869B      	0.0s
+ => => sha256:6d17b7c0d4a8e7b46141cc2681f5b040c4be0ec229227be9d1fbe39fc18f76c5 4.61kB / 4.61kB  	0.0s
+ => => sha256:0bc8ff246cb8ff91066742f8f7ded40397e7aaaa925200b7bec5382d1ffcd6a0 31.42MB / 31.42MB   30.4s
+ => => sha256:e87dc284eda57fe6f1d5be295889a742364d6d91e93be71884dd4a992f74c188 50.08MB / 50.08MB   23.4s
+ => => sha256:f1fbf9532e5b7f4c7ff8816c4941e636c6db3fe1f37487868908d79aeb735aa 114.51MB / 114.51MB  49.1s
+ => => extracting sha256:0bc8ff246cb8ff91066742f8f7ded40397e7aaaa925200b7bec5382d1ffcd6a0       	7.0s
+ => => extracting sha256:e87dc284eda57fe6f1d5be295889a742364d6d91e93be71884dd4a992f74c188      	11.7s
+ => => extracting sha256:f1fbf9532e5b7f4c7ff8816c4941e636c6db3fe1f37487868908d79aeb735aaf      	20.4s
+ => [internal] load build context                                                               	0.3s
+ => => transferring context: 65B                                                                	0.0s
+ => [2/5] WORKDIR /app                                                                          	1.2s
+ => [3/5] COPY 1.sh /app/1.sh                                                                   	0.5s
+ => [4/5] RUN chmod +x /app/1.sh                                                                	5.4s
+ => [5/5] RUN conda install -y mlflow boto3 pymysql                                           	245.5s
+ => exporting to image                                                                        	161.1s
+ => => exporting layers                                                                       	160.9s
+ => => writing image sha256:59adf697968387e96b80dfcbb302a24db43ef076758495e64cc3f5cdea8ddd2a    	0.1s
+ => => naming to docker.io/library/netology-ml:netology-ml                                      	0.1s
