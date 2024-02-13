@@ -2,6 +2,7 @@
 - name: "Homework Playbook"
   hosts: 
     - netology-ml
+  remote_user: ansible 
   become: true
   tasks:
     - name: "Check SSH connectivity"
