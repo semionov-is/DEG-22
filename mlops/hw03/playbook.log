@@ -1,0 +1,59 @@
+root@debian:/home/debuser/mlops/hw03# ansible-playbook homework.yaml
+
+PLAY [Homework Playbook] ***************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************
+[WARNING]: Platform linux on host node2 is using the discovered Python interpreter at
+/usr/bin/python2.7, but future installation of another Python interpreter could change the meaning
+of that path. See https://docs.ansible.com/ansible-
+core/2.14/reference_appendices/interpreter_discovery.html for more information.
+ok: [node2]
+[WARNING]: Platform linux on host node1 is using the discovered Python interpreter at
+/usr/bin/python2.7, but future installation of another Python interpreter could change the meaning
+of that path. See https://docs.ansible.com/ansible-
+core/2.14/reference_appendices/interpreter_discovery.html for more information.
+ok: [node1]
+
+TASK [Check connectivity (ping)] *******************************************************************
+ok: [node1]
+ok: [node2]
+
+TASK [Install required packages] *******************************************************************
+ok: [node2] => (item=net-tools)
+ok: [node1] => (item=net-tools)
+ok: [node2] => (item=git)
+ok: [node1] => (item=git)
+ok: [node2] => (item=tree)
+ok: [node1] => (item=tree)
+ok: [node2] => (item=htop)
+ok: [node1] => (item=htop)
+ok: [node2] => (item=mc)
+ok: [node1] => (item=mc)
+ok: [node2] => (item=vim)
+ok: [node1] => (item=vim)
+
+TASK [Update packages] *****************************************************************************
+ok: [node1]
+ok: [node2]
+
+TASK [Copy the text file] **************************************************************************
+ok: [node1]
+ok: [node2]
+
+TASK [Create user groups and home directories] *****************************************************
+ok: [node2] => (item=devops_1_loop)
+ok: [node1] => (item=devops_1_loop)
+ok: [node1] => (item=test_1_loop)
+ok: [node2] => (item=test_1_loop)
+
+TASK [Create home users] ***************************************************************************
+ok: [node1] => (item=devops_1)
+ok: [node2] => (item=devops_1)
+ok: [node1] => (item=test_1)
+ok: [node2] => (item=test_1)
+
+PLAY RECAP *****************************************************************************************
+node1                  	: ok=7	changed=0	unreachable=0	failed=0	skipped=0	rescued=0	ignored=0   
+node2                  	: ok=7	changed=0	unreachable=0	failed=0	skipped=0	rescued=0	ignored=0   
+
+root@debian:/home/debuser/mlops/hw03#
