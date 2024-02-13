@@ -1,52 +1,48 @@
----
 - name: "Homework Playbook"
-  hosts: 
-    - netology-ml
-  remote_user: ansible 
+  hosts: all
   become: true
   tasks:
-    - name: "Check SSH connectivity"
-      ping:
+	- name: "Check connectivity (ping)"
+  	ping:
 
-    - name: "Install required packages"
-      package:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - net-tools
-        - git
-        - tree
-        - htop
-        - mc
-        - vim
+	- name: "Install required packages"
+  	package:
+    	name: "{{ item }}"
+    	state: present
+  	with_items:
+    	- net-tools
+    	- git
+    	- tree
+    	- htop
+    	- mc
+    	- vim
 
-    - name: "Update all packages"
-      package:
-        name: "*"
-        state: latest
+	- name: "Update packages"
+  	ansible.builtin.apk:
+    	update_cache: yes
+    	upgrade: yes
 
-    - name: "Copy the text file"
-      copy:
-        src: /app/test.txt
-        dest: /test.txt
-      delegate_to: netology-ml
+	- name: "Copy the text file"
+  	copy:
+    	src: /home/debuser/mlops/hw03/test.txt
+    	dest: /home/ansible/test.txt
 
-    - name: "Create user groups and home directories"
-      group:
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - devops_1
-        - test_1
-      loop_control:
-        label: "{{ item }}_loop"
+	- name: "Create user groups and home directories"
+  	group:
+    	name: "{{ item }}"
+    	state: present
+  	with_items:
+    	- devops_1
+    	- test_1
+  	loop_control:
+    	label: "{{ item }}_loop"
 
-    - name: "Create home users"
-      user:
-        name: "{{ item }}"
-        group: "{{ item }}"
-        home: "/home/{{ item }}"
-        state: present
-      with_items:
-        - devops_1
-        - test_1
+	- name: "Create home users"
+  	user:
+    	name: "{{ item }}"
+    	group: "{{ item }}"
+    	home: "/home/{{ item }}"
+    	state: present
+  	with_items:
+    	- devops_1
+    	- test_1
