@@ -1,3 +1,6 @@
+inventory=/etc/ansible/hosts
+
+hosts:
 [all]
 node1 ansible_host=172.17.0.2 ansible_user=ansible ansible_password=ansible
 node2 ansible_host=172.17.0.3 ansible_user=ansible ansible_password=ansible
